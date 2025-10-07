@@ -1,0 +1,9 @@
+<?php
+session_start();
+// 如果未登入，重定向到 login.php 並儲存當前頁面
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    $redirect_url = $_SERVER['REQUEST_URI'];
+    header("Location: login.php?redirect=" . urlencode($redirect_url));
+    exit;
+}
+?>

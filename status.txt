@@ -1,0 +1,36 @@
+<?php include 'auth.php'; ?>
+<?php include 'header.php'; ?>
+<?php include 'navbar.php'; ?>
+<?php
+$fee = 0;
+$meal = isset($_POST['meal']) ? $_POST['meal'] : '';
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SESSION['role'] == 'teacher') {
+        $fee = 0;
+    } elseif ($_SESSION['role'] == 'student') {
+        $fee = ($meal == 'yes') ? 60 : 0;
+    }
+}
+?>
+        <h1>迎新茶會報名</h1>
+        <p>歡迎您，<?php echo htmlspecialchars($_SESSION['name']); ?>！</p>
+        <form method="POST" action="">
+            <div class="mb-3">
+                <label>是否用餐：</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="meal" id="meal_yes" value="yes" <?php echo ($meal == 'yes') ? 'checked' : ''; ?> required>
+                    <label class="form-check-label" for="meal_yes">是</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="meal" id="meal_no" value="no" <?php echo ($meal == 'no') ? 'checked' : ''; ?> required>
+                    <label class="form-check-label" for="meal_no">否</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">計算費用</button>
+        </form>
+        <?php if ($_SERVER['REQUEST_METHOD'] == 'POST'): ?>
+            <div class="alert alert-info mt-3">
+                費用：<?php echo $fee; ?> 元
+            </div>
+        <?php endif; ?>
+<?php include 'footer.php'; ?>

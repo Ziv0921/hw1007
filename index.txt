@@ -1,0 +1,25 @@
+<?php include 'header.php'; ?>
+<?php include 'navbar.php'; ?>
+        <h1>歡迎來到活動報名系統</h1>
+        <p>請從導覽列選擇活動報名。</p>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">迎新茶會</h5>
+                        <p class="card-text">參加迎新茶會，認識新朋友。</p>
+                        <a href="status.php" class="btn btn-primary">報名</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">資管一日營</h5>
+                        <p class="card-text">體驗資管一日營，學習新知識。</p>
+                        <a href="conference.php" class="btn btn-primary">報名</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+<?php include 'footer.php'; ?>
